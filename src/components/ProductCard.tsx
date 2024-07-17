@@ -3,51 +3,64 @@ import Image from './Image';
 import { IProduct } from '../interfaces';
 import Button from './ui/Button';
 
+
+
 interface IProps {
   product: IProduct;
 }
 
+const fullImage = '';
 const ProductCard = ({ product }: IProps) => {
   const { title, price, imgURL, description } = product;
-
-  // Fallback URL
-  const fallbackImageUrl = 'https://cdn.motor1.com/images/mgl/MkO9NN/s1/future-supercars.webp';
-
   return (
-    <div className='border border-gray-600 rounded-md p-2 flex flex-col'>
+    <div className='border rounded-md p-sm flex flex-col hover:scale-105 hover:shadow-lg transition duration-300 ease-in-out '>
+      
       <Image
-        imageUrl={imgURL || fallbackImageUrl}
-        alt={title}
-        className='rounded-md mb-2 w-full'
+        imageUrl={imgURL || fullImage}
+        alt='product name'
+        className='rounded-md h-52 mb-2 object-cover w-full'
       />
+<div className='h-20'>
 
-      <h3>{title}</h3>
-      <p>{txtSlice(description)}</p>
-      <div className='flex items-center my-4 space-x-2'>
-        <span className='w-5 h-5 bg-indigo-600 rounded-full cursor-pointer' />
-        <span className='w-5 h-5 bg-blue-600 rounded-full cursor-pointer' />
-        <span className='w-5 h-5 bg-red-600 rounded-full cursor-pointer' />
+
+      <h3 className='text-lg font-semibold '>{title}</h3>
+      <p className='text-xs text-gray-500 break-words'>
+        {txtSlice(description)}
+      </p>
       </div>
-      <div className='flex items-center justify-between mb-2'>
-        <span className='text-indigo-900'>{price}</span>
+      <div className='flex items-center  space-x-3 my-4'>
+        <span className='w-5 h-5 bg-indigo-600 rounded-full cursor-pointer ' />
+        <span className='w-5 h-5 bg-blue-600 rounded-full cursor-pointer ' />
+        <span className='w-5 h-5 bg-red-600 rounded-full  cursor-pointer ' />
+      </div>
+      <div className='flex items-center justify-between '>
+        <span className='text-gray-700 text-lg font-semibold'>{price}$</span>
         <div className='flex space-x-2'>
-          <h3>Cars</h3>
           <Image
-            imageUrl={imgURL || fallbackImageUrl}
-            alt={title}
+            imageUrl={imgURL || fullImage}
+            alt='product name'
             className='rounded-full w-10 h-10 object-bottom'
           />
         </div>
       </div>
-      <div className='flex gap-2'>
-        <Button
-          onClick={() => alert('added')}
-          className='bg-indigo-600'
-        >
-          Add to Cart
+
+      <div className='flex items-center justify-between space-x-2 mt-3 '>
+        <Button className='bg-indigo-900 '
+        onClick={()=>{
+        
+          
+          console.log("the model is open")
+        }}>
+     
+      <>
+     
+add the product 
+
+     </>
+    
         </Button>
 
-        <Button className='bg-red-600'>Destroy</Button>
+        <Button className='bg-red-600 '>Destroy</Button>
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
 
 
 import ProductCard from './components/ProductCard'
-import {products} from './data' 
+import { fakeProductList } from './data'
+
+
 
  function App() {
+  const products = fakeProductList
 
     // render products 
     const productList = products.map((product)=>{
@@ -12,8 +15,8 @@ import {products} from './data'
 
   return (
   
-    <div>
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 p-3 ">
+    <div className='container'>
+      <div className=" m-5 grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 p-2  ">
       {productList}
       </div>
 
